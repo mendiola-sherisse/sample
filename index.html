@@ -2,307 +2,265 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WORKSPHERE</title>
+  <title>WORKSPHERE - Updated</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
 
     body {
       display: flex;
-      height: 100vh;
-      background: linear-gradient(135deg, #3c1053, #ad5389);
+      min-height: 100vh;
+      background: linear-gradient(135deg, #3c1053 0%, #ad5389 60%);
       color: #333;
     }
 
-    /* Sidebar */
     .sidebar {
       width: 250px;
-      background: rgba(40, 0, 60, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 25px 0;
+      background: rgba(20, 6, 30, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 22px 18px;
       display: flex;
       flex-direction: column;
-      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
       color: #fff;
     }
 
     .sidebar h2 {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      color: #ffb6f2;
+      margin-bottom: 24px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffd6f0;
     }
 
     .sidebar a {
-      padding: 14px 22px;
+      padding: 12px 14px;
       color: #ddd;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 16px;
-      transition: all 0.3s ease;
+      font-size: 15px;
+      border-radius: 10px;
+      transition: all 0.18s ease;
     }
 
     .sidebar a:hover,
     .sidebar a.active {
-      background: linear-gradient(90deg, #7a1ca2, #ff66b2);
+      background: linear-gradient(90deg, rgba(122,28,162,0.12), rgba(255,102,178,0.12));
       color: #fff;
-      border-left: 4px solid #ffb6f2;
+      transform: translateX(6px);
     }
 
-    /* Main */
+   
     .main {
       flex: 1;
-      padding: 25px 35px;
+      padding: 22px 28px;
       overflow-y: auto;
       background-color: #fafafa;
-      border-radius: 0 20px 20px 0;
+      border-radius: 0 18px 18px 0;
     }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 18px;
     }
 
+    .title-left { display:flex; align-items:center; gap:12px; }
+
     .header h1 {
-      font-size: 28px;
-      font-weight: bold;
-      color: #6a0dad;
+      font-size: 22px;
+      font-weight: 800;
+      color: #4b1262;
+      letter-spacing: 0.3px;
+    }
+
+    .user-badge {
+      display:flex; align-items:center; gap:10px; background:#fff; padding:8px 12px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .user-initial {
+      width:36px; height:36px; border-radius:50%; background:#6a0dad; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;
     }
 
     .header input {
-      padding: 10px 16px;
-      border: 1px solid #ccc;
-      border-radius: 25px;
+      padding: 9px 14px;
+      border: 1px solid #e6e6e6;
+      border-radius: 999px;
       outline: none;
-      width: 240px;
-      font-size: 15px;
+      width: 260px;
+      font-size: 14px;
       background: #fff;
+      box-shadow: 0 4px 14px rgba(106,13,173,0.06);
     }
 
-    /* Cards */
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
     }
 
     .card {
       background: #fff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease;
+      padding: 16px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      transition: transform 0.18s ease;
     }
 
-    .card:hover { transform: translateY(-4px); }
+    .card:hover { transform: translateY(-6px); }
 
-    .card h3 {
-      margin-bottom: 14px;
-      font-size: 18px;
-      color: #6a0dad;
+    .card h3 { margin-bottom:10px; font-size:16px; color:#6a0dad; display:flex; align-items:center; gap:8px; }
+
+    #dashboard-upcoming {
+      background: #fff8fc;
+      border: 2px solid #ff9ad4;
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 6px 20px rgba(255, 102, 178, 0.15);
+      animation: glow 1.8s ease-in-out infinite alternate;
+    }
+
+    #dashboard-upcoming h4 {
+      background: linear-gradient(90deg,#ff66b2,#ffb6f2);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    #dashboard-upcoming li {
+      list-style: none;
+      margin-bottom: 8px;
+      padding: 10px 12px;
+      background: #fff;
+      border-radius: 10px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
-    /* Feed + Bulletin */
+    #dashboard-upcoming li::before {
+      content: "✅";
+      font-size: 1rem;
+    }
     #activity-feed, #bulletin-board {
-      max-height: 220px;
+      max-height: 260px;
       overflow-y: auto;
       padding: 12px;
-      background: #fdfdfd;
-      border: 1px solid #ddd;
+      background: #fbfbfd;
+      border: 1px solid #f0eef6;
       border-radius: 12px;
     }
 
-    .feed-item {
-      background: #f5f5f5;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 0.9rem;
+    .feed-item { background: #fff; margin-bottom: 10px; padding: 10px; border-radius:10px; font-size:0.92rem; box-shadow:0 1px 4px rgba(0,0,0,0.03); }
+
+    .feed-time { font-size: 0.75rem; color: #777; margin-top:6px; }
+
+  
+    .collab-wrap { display:flex; gap:18px; }
+
+    .collab-table {
+      width: 100%; border-collapse: collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.04);
     }
 
-    .feed-time { font-size: 0.75rem; color: #666; }
+    .collab-table th, .collab-table td { padding:12px 14px; border-bottom:1px solid #f1eef6; text-align:left; vertical-align:middle; }
+    .collab-table th { background:#faf5ff; color:#5b3b7a; font-weight:700; }
 
-    /* Collaboration Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    .task-title { font-weight:700; color:#4a1260; }
+
+    .profile-stack { display:flex; gap:6px; align-items:center; }
+
+    .profile-circle { width:34px; height:34px; border-radius:50%; background:#ddd; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; text-transform:uppercase; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+
+    .btn-join, .btn-done {
+      background: linear-gradient(90deg,#6a0dad,#ff66b2);
+      color: white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:700; box-shadow:0 6px 14px rgba(106,13,173,0.08);
     }
 
-    th, td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
+    .btn-join.small { padding:6px 10px; font-size:13px; }
 
-    th {
-      background: #f5f5f5;
-      font-weight: bold;
-      color: #555;
-    }
+    .btn-done { background: linear-gradient(90deg,#1fa35a,#3ccf7f); }
 
-    .btn-join {
-      background: #6a0dad;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+    .btn-ghost { background:transparent; border:1px solid #eee; padding:6px 8px; border-radius:8px; cursor:pointer; }
 
-    .btn-join:hover { background: #ff66b2; }
+    .done-tag { background:#eafaf0; color:#1a8a4a; padding:6px 8px; border-radius:8px; font-weight:700; }
 
-    .member-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
 
-    .profile-circle {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: #ddd;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-transform: uppercase;
-    }
-
-    /* Calendar */
     .calendar-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 15px 0;
+      margin: 12px 0;
       background: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
     }
 
     .calendar-header button {
-      background: #6a0dad;
-      color: #fff;
-      border: none;
+      background: linear-gradient(90deg,#fff 0%, #fff 100%);
+      color: #6a0dad;
+      border: 1px solid rgba(106,13,173,0.12);
       padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .calendar-header button:hover { background: #ff66b2; }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .day {
-      padding: 12px;
-      text-align: center;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      background: #fff;
-    }
-
-    .day:hover { background: #f2e6ff; }
-    .today { background: #ff66b2; color: white; font-weight: bold; }
-
-    /* Upcoming Tasks Container */
-    .upcoming-container {
-      background: #fff;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-    }
-
-    #upcoming-tasks { margin-top: 10px; list-style: none; }
-    #upcoming-tasks li {
-      background: #f5f5f5;
-      margin-bottom: 6px;
-      padding: 8px;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    #tasks li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 12px;
-      background: #fff;
-      margin-bottom: 6px;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .task-actions button {
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 14px;
-      margin-left: 8px;
-    }
-
-    .edit-btn { color: #6a0dad; }
-    .delete-btn { color: #ff4d4d; }
-
-    .task-input-box {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-      background: #fff;
-      padding: 12px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .task-input-box input {
-      flex: 1;
-      border: none;
-      outline: none;
       font-size: 15px;
-    }
-
-    .task-input-box button {
-      background: #6a0dad;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 8px;
       cursor: pointer;
+      display:flex; align-items:center; gap:8px; font-weight:700;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
 
-    .task-input-box button:hover { background: #ff66b2; }
-    .hidden { display: none; }
+    .calendar-header button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(106,13,173,0.08); }
+
+    .calendar-grid { display:grid; grid-template-columns: repeat(7, 1fr); gap:8px; margin-bottom:12px; }
+
+    .day { padding:12px; text-align:center; border-radius:8px; cursor:pointer; transition: background 0.18s ease, transform 0.12s ease; background:#fff; }
+    .day:hover { background:#f7ecff; transform: translateY(-4px); }
+    .today { background: linear-gradient(90deg,#ff66b2,#ffb6f2); color:white; font-weight:800; }
+
+    .upcoming-container { background:#fff; padding:12px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+
+    #upcoming-tasks li { padding:8px; border-radius:8px; background:#fbfbff; margin-bottom:8px; font-weight:700; }
+
+    #tasks li { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#fff; margin-bottom:8px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+
+    .task-actions button { border:none; background:transparent; cursor:pointer; font-size:14px; margin-left:8px; }
+
+    .task-input-box { display:flex; gap:10px; margin-top:10px; background:#fff; padding:10px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+
+    .task-input-box input { flex:1; border:none; outline:none; font-size:14px; }
+
+    .task-input-box button { background: linear-gradient(90deg,#6a0dad,#ff66b2); color:white; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+
+    .small-muted { font-size:0.85rem; color:#666; }
+
+
+    .hidden { display: none !important; }
+
+    @media (max-width:900px){
+      .cards{ grid-template-columns:1fr }
+      .sidebar{ display:none }
+      .main{ padding:14px }
+    }
+    @media (max-width:700px){
+      .calendar-grid { grid-template-columns: repeat(7, minmax(24px, 1fr)); }
+      .main > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
   <div class="sidebar">
     <h2>WORKSPHERE</h2>
     <a href="#" class="active" onclick="showTab(event, 'dashboard')"><i class="fas fa-home"></i> Dashboard</a>
@@ -312,11 +270,17 @@
 
   <div class="main">
     <div class="header">
-      <h1 id="page-title">Dashboard</h1>
-      <input type="text" placeholder="Search...">
+      <div class="title-left">
+        <h1 id="page-title">Dashboard</h1>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;">
+        <input type="text" placeholder="Search..." id="global-search">
+        <div class="user-badge"><div class="user-initial">U</div><div><div style="font-weight:800;">USER</div><div class="small-muted">Online</div></div></div>
+      </div>
     </div>
 
-    <!-- Dashboard -->
+  
     <div id="dashboard" class="tab">
       <div class="cards">
         <div class="card">
@@ -331,33 +295,25 @@
           <div id="activity-feed"></div>
         </div>
       </div>
+
+      <div class="card" style="margin-top:12px;">
+        <h3><i class="fas fa-list"></i> Upcoming Tasks</h3>
+        <div id="dashboard-upcoming" class="upcoming-container"></div>
+      </div>
     </div>
 
-    <!-- Collaboration -->
     <div id="collaboration" class="tab hidden">
       <h2 style="color:#6a0dad; margin-bottom:10px;"><i class="fas fa-comments"></i> Collaboration Tracker</h2>
-      <table>
+      <div style="margin-bottom:12px; display:flex; justify-content:flex-end;"><small class="small-muted">You are signed in as <strong>USER</strong></small></div>
+      <table class="collab-table">
         <thead>
-          <tr><th>Member</th><th>Status</th><th>Collaboration Time</th><th>Action</th></tr>
+          <tr><th>Task</th><th>When (date)</th><th>Participants</th><th>Time Spent (mins)</th><th>Action</th></tr>
         </thead>
-        <tbody>
-          <tr data-member="Anna">
-            <td><div class="member-info"><div class="profile-circle" data-member="Anna">A</div> Anna</div></td>
-            <td class="status" style="color:red;">Absent</td>
-            <td class="time">0 mins</td>
-            <td><button class="btn-join" onclick="toggleAttendance(this)">Join</button></td>
-          </tr>
-          <tr data-member="James">
-            <td><div class="member-info"><div class="profile-circle" data-member="James">J</div> James</div></td>
-            <td class="status" style="color:red;">Absent</td>
-            <td class="time">0 mins</td>
-            <td><button class="btn-join" onclick="toggleAttendance(this)">Join</button></td>
-          </tr>
-        </tbody>
+        <tbody id="collab-body"></tbody>
       </table>
     </div>
 
-    <!-- Calendar -->
+
     <div id="calendar" class="tab hidden">
       <h2 style="color:#6a0dad;"><i class="fas fa-calendar-alt"></i> Calendar</h2>
       <div class="calendar-header">
@@ -366,25 +322,33 @@
         <button onclick="nextMonth()">Next <i class="fas fa-chevron-right"></i></button>
       </div>
       <div class="calendar-grid" id="calendar-grid"></div>
-      <div class="upcoming-container">
-        <h3 style="color:#6a0dad;">📅 Upcoming Tasks</h3>
-        <ul id="upcoming-tasks"></ul>
-      </div>
-      <div id="task-list">
-        <h4>Tasks for <span id="selected-date">Select a day</span></h4>
-        <ul id="tasks"></ul>
-        <div class="task-input-box">
-          <input type="text" id="task-input" placeholder="Add a task">
-          <button onclick="addTask()">Add</button>
+
+      <div style="display:grid; grid-template-columns:1fr 380px; gap:16px; align-items:start;">
+        <div class="upcoming-container">
+          <h3 style="color:#6a0dad; margin-bottom:8px;">📅 Upcoming Tasks</h3>
+          <ul id="upcoming-tasks"></ul>
+        </div>
+        <div class="card">
+          <h4>Tasks for <span id="selected-date">Select a day</span></h4>
+          <ul id="tasks"></ul>
+          <div class="task-input-box">
+            <input type="text" id="task-input" placeholder="Add a task">
+            <button onclick="addTask()">Add</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    const joinTimes = {};
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
+    const currentUser = 'USER';
+    const demoMembers = ['Anna','James'];
+    const joinTimes = JSON.parse(localStorage.getItem('joinTimes') || '{}');
+    const timeSpent = JSON.parse(localStorage.getItem('timeSpent') || '{}'); 
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || {}; 
     let currentDate = new Date();
+
+    function saveState(){ localStorage.setItem('tasks', JSON.stringify(tasks)); localStorage.setItem('joinTimes', JSON.stringify(joinTimes)); localStorage.setItem('timeSpent', JSON.stringify(timeSpent)); }
 
     function showTab(event, tabId) {
       document.querySelectorAll('.tab').forEach(tab => tab.classList.add('hidden'));
@@ -392,150 +356,230 @@
       document.getElementById("page-title").innerText = tabId.charAt(0).toUpperCase() + tabId.slice(1);
       document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
       event.currentTarget.classList.add('active');
-      if (tabId === "calendar") { renderCalendar(); renderUpcomingTasks(); }
+      if (tabId === 'calendar') { renderCalendar(); renderUpcomingTasks(); }
+      if (tabId === 'collaboration') renderCollaborationTable();
+      if (tabId === 'dashboard') renderUpcomingOnDashboard();
     }
 
-    function toggleAttendance(button) {
-      const row = button.closest("tr");
-      const statusCell = row.querySelector(".status");
-      const timeCell = row.querySelector(".time");
-      const memberName = row.dataset.member;
-
-      if (button.textContent.includes("Join")) {
-        statusCell.textContent = "Present";
-        statusCell.style.color = "green";
-        button.textContent = "Leave";
-        joinTimes[memberName] = new Date();
-        addActivity(`${memberName} joined the daily meeting`);
-      } else {
-        const startTime = joinTimes[memberName];
-        const diffMinutes = Math.max(1, Math.round((new Date() - startTime) / 60000));
-        const currentMinutes = parseInt(timeCell.textContent) || 0;
-        timeCell.textContent = `${currentMinutes + diffMinutes} mins`;
-        statusCell.textContent = "Absent";
-        statusCell.style.color = "red";
-        button.textContent = "Join";
-        delete joinTimes[memberName];
-        addActivity(`${memberName} left the meeting (${diffMinutes} mins)`);
-      }
-    }
-
-    function addActivity(message) {
-      const feed = document.getElementById("activity-feed");
-      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const div = document.createElement("div");
-      div.classList.add("feed-item");
+    function addActivity(message){
+      const feed = document.getElementById('activity-feed');
+      const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      const div = document.createElement('div');
+      div.classList.add('feed-item');
       div.innerHTML = `<strong>${message}</strong><div class="feed-time">${time}</div>`;
       feed.prepend(div);
     }
 
-    function renderCalendar() {
+
+    function getAllTaskEntries(){
+      const entries = [];
+      for(const dateKey in tasks){
+        tasks[dateKey].forEach((task, idx) => entries.push({ date: dateKey, task, id: `${dateKey}||${idx}` }));
+      }
+      entries.sort((a,b) => new Date(a.date) - new Date(b.date));
+      return entries;
+    }
+
+    function renderCollaborationTable(){
+      const tbody = document.getElementById('collab-body');
+      tbody.innerHTML = '';
+      const entries = getAllTaskEntries();
+      if(entries.length === 0){ tbody.innerHTML = '<tr><td colspan="5" style="padding:18px; text-align:center; color:#777">No tasks available. Add tasks in Calendar.</td></tr>'; return; }
+      entries.forEach(entry => {
+        const tr = document.createElement('tr');
+        const participants = (joinTimes[entry.id]) ? Object.keys(joinTimes[entry.id]) : [];
+        const times = timeSpent[entry.id] || {};
+        const totalMinutes = Object.values(times).reduce((a,b)=>a+ (parseInt(b)||0),0);
+        tr.innerHTML = `
+          <td><div class="task-title">${escapeHtml(entry.task)}</div><div class="small-muted">${entry.id.split('||')[0]}</div></td>
+          <td>${entry.date}</td>
+          <td><div class="profile-stack" id="p-${entry.id}"></div></td>
+          <td id="time-${entry.id}">${totalMinutes} mins</td>
+          <td id="actions-${entry.id}"></td>
+        `;
+        tbody.appendChild(tr);
+
+        const stack = document.getElementById(`p-${entry.id}`);
+        const joined = timeSpent[entry.id] ? Object.keys(timeSpent[entry.id]) : [];
+        const showOrder = [currentUser, ...demoMembers.filter(m=>m!==currentUser)];
+        showOrder.forEach(member => {
+          if(joinTimes[entry.id] && joinTimes[entry.id][member]){
+            const el = document.createElement('div'); el.className='profile-circle'; el.textContent = member.charAt(0);
+            el.title = `${member} (joined)`;
+            stack.appendChild(el);
+          }
+        });
+
+        const actionsCell = document.getElementById(`actions-${entry.id}`);
+  
+        const joinBtn = document.createElement('button');
+        joinBtn.className = 'btn-join small';
+        if(joinTimes[entry.id] && joinTimes[entry.id][currentUser]){ joinBtn.textContent = 'Leave'; } else { joinBtn.textContent = 'Join'; }
+        joinBtn.onclick = () => toggleJoin(entry.id, currentUser);
+        actionsCell.appendChild(joinBtn);
+
+        demoMembers.forEach(m=>{
+          if(m === currentUser) return;
+          const btn = document.createElement('button'); btn.className='btn-ghost small'; btn.style.marginLeft='8px'; btn.textContent = (joinTimes[entry.id] && joinTimes[entry.id][m]) ? `Leave ${m}` : `Join ${m}`;
+          btn.onclick = ()=> toggleJoin(entry.id, m);
+          actionsCell.appendChild(btn);
+        });
+
+  
+        const doneBtn = document.createElement('button'); doneBtn.className='btn-done small'; doneBtn.style.marginLeft='8px'; doneBtn.textContent='Mark Done';
+        doneBtn.onclick = ()=> markTaskDone(entry.id);
+        actionsCell.appendChild(doneBtn);
+      });
+    }
+
+    function toggleJoin(taskId, member){
+      if(!joinTimes[taskId]) joinTimes[taskId] = {};
+      if(!timeSpent[taskId]) timeSpent[taskId] = {};
+
+      if(joinTimes[taskId][member]){
+        const start = new Date(joinTimes[taskId][member]);
+        const mins = Math.max(1, Math.round((new Date() - start)/60000));
+        timeSpent[taskId][member] = (parseInt(timeSpent[taskId][member]) || 0) + mins;
+        delete joinTimes[taskId][member];
+        addActivity(`${member} left "${getTaskTitle(taskId)}" (+${mins} mins)`);
+      } else {
+        joinTimes[taskId][member] = new Date().toISOString();
+        addActivity(`${member} joined "${getTaskTitle(taskId)}"`);
+      }
+      if(Object.keys(joinTimes[taskId]||{}).length === 0) delete joinTimes[taskId];
+      if(Object.keys(timeSpent[taskId]||{}).length === 0) delete timeSpent[taskId];
+      saveState(); renderCollaborationTable(); renderUpcomingTasks(); renderUpcomingOnDashboard();
+    }
+
+    function getTaskTitle(taskId){ const [date, idx] = taskId.split('||'); const arr = tasks[date] || []; return arr[parseInt(idx)] || '(task)'; }
+
+    function markTaskDone(taskId){
+      const [date, idx] = taskId.split('||');
+      if(!tasks[date]) return;
+      const removed = tasks[date].splice(parseInt(idx),1)[0];
+      if(tasks[date].length === 0) delete tasks[date];
+      if(joinTimes[taskId]){
+        for(const m in joinTimes[taskId]){
+          const start = new Date(joinTimes[taskId][m]);
+          const mins = Math.max(1, Math.round((new Date() - start)/60000));
+          timeSpent[taskId][m] = (parseInt(timeSpent[taskId][m])||0) + mins;
+        }
+        delete joinTimes[taskId];
+      }
+      addActivity(`Task done: "${removed}"`);
+      saveState(); renderCollaborationTable(); renderUpcomingTasks(); renderUpcomingOnDashboard();
+    }
+
+
+    function renderCalendar(){
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
       const firstDay = new Date(year, month, 1);
-      const lastDay = new Date(year, month + 1, 0);
-      document.getElementById("month-year").textContent =
-        currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
-      const grid = document.getElementById("calendar-grid");
-      grid.innerHTML = "";
-      for (let i = 0; i < firstDay.getDay(); i++) grid.innerHTML += `<div></div>`;
-      for (let d = 1; d <= lastDay.getDate(); d++) {
-        const dayDiv = document.createElement("div");
-        dayDiv.classList.add("day");
-        dayDiv.textContent = d;
-        if (d === new Date().getDate() &&
-            month === new Date().getMonth() &&
-            year === new Date().getFullYear()) {
-          dayDiv.classList.add("today");
-        }
-        dayDiv.onclick = () => selectDate(d, month, year);
+      const lastDay = new Date(year, month+1, 0);
+      document.getElementById('month-year').textContent = currentDate.toLocaleString('default',{month:'long', year:'numeric'});
+      const grid = document.getElementById('calendar-grid'); grid.innerHTML = '';
+      const labels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      labels.forEach(l=>{ const el = document.createElement('div'); el.style.fontWeight='700'; el.style.color='#6b4a7a'; el.style.padding='6px 0'; el.style.textAlign='center'; el.textContent = l; grid.appendChild(el); });
+      for(let i=0;i<firstDay.getDay();i++) grid.appendChild(document.createElement('div'));
+      for(let d=1; d<= lastDay.getDate(); d++){
+        const dayDiv = document.createElement('div'); dayDiv.className='day'; dayDiv.textContent = d;
+        if(d === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear()) dayDiv.classList.add('today');
+        dayDiv.onclick = ()=> selectDate(d,month,year);
         grid.appendChild(dayDiv);
       }
     }
 
-    function selectDate(day, month, year) {
-      const dateKey = `${year}-${month + 1}-${day}`;
-      document.getElementById("selected-date").textContent = dateKey;
+    function selectDate(day, month, year){
+      const dateKey = `${year}-${month+1}-${day}`;
+      document.getElementById('selected-date').textContent = dateKey;
       displayTasks(dateKey);
     }
 
-    function addTask() {
-      const dateKey = document.getElementById("selected-date").textContent;
-      if (dateKey === "Select a day") return alert("Please select a day first!");
-      const taskInput = document.getElementById("task-input");
-      if (!taskInput.value.trim()) return;
-      if (!tasks[dateKey]) tasks[dateKey] = [];
-      tasks[dateKey].push(taskInput.value);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      taskInput.value = "";
-      displayTasks(dateKey);
-      renderUpcomingTasks();
+    function addTask(){
+      const dateKey = document.getElementById('selected-date').textContent;
+      if(dateKey === 'Select a day') return alert('Please select a day first!');
+      const taskInput = document.getElementById('task-input');
+      if(!taskInput.value.trim()) return;
+      if(!tasks[dateKey]) tasks[dateKey] = [];
+      tasks[dateKey].push(taskInput.value.trim());
+      taskInput.value = '';
+      saveState(); displayTasks(dateKey); renderUpcomingTasks(); renderCollaborationTable(); renderUpcomingOnDashboard(); addActivity(`Task added: "${tasks[dateKey][tasks[dateKey].length-1]}" on ${dateKey}`);
     }
 
-    function displayTasks(dateKey) {
-      const taskList = document.getElementById("tasks");
-      taskList.innerHTML = "";
-      (tasks[dateKey] || []).forEach((task, i) => {
-        const li = document.createElement("li");
-        li.innerHTML = `${task} 
-          <span class="task-actions">
-            <button class="edit-btn" onclick="editTask('${dateKey}',${i})"><i class="fas fa-edit"></i></button>
-            <button class="delete-btn" onclick="deleteTask('${dateKey}',${i})"><i class="fas fa-trash"></i></button>
-          </span>`;
+    function displayTasks(dateKey){
+      const taskList = document.getElementById('tasks'); taskList.innerHTML = '';
+      (tasks[dateKey] || []).forEach((task, i)=>{
+        const li = document.createElement('li');
+        const id = `${dateKey}||${i}`;
+        li.innerHTML = `<div style='max-width:70%'>${escapeHtml(task)}</div><div style='display:flex;gap:8px;align-items:center'>
+          <button class='btn-ghost' onclick="editTask('${dateKey}',${i})"><i class='fas fa-edit'></i></button>
+          <button class='btn-ghost' onclick="deleteTask('${dateKey}',${i})"><i class='fas fa-trash'></i></button>
+          <button class='btn-join small' onclick="toggleJoin('${id}','${currentUser}')">Join</button>
+        </div>`;
         taskList.appendChild(li);
       });
     }
 
-    function editTask(dateKey, index) {
-      const newTask = prompt("Edit task:", tasks[dateKey][index]);
-      if (newTask !== null && newTask.trim()) {
-        tasks[dateKey][index] = newTask.trim();
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        displayTasks(dateKey);
-        renderUpcomingTasks();
+    function editTask(dateKey, index){
+      const newTask = prompt('Edit task:', tasks[dateKey][index]);
+      if(newTask !== null && newTask.trim()){
+        tasks[dateKey][index] = newTask.trim(); saveState(); displayTasks(dateKey); renderUpcomingTasks(); renderCollaborationTable(); renderUpcomingOnDashboard();
       }
     }
 
-    function deleteTask(dateKey, index) {
-      tasks[dateKey].splice(index, 1);
-      if (tasks[dateKey].length === 0) delete tasks[dateKey];
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      displayTasks(dateKey);
-      renderUpcomingTasks();
+    function deleteTask(dateKey,index){
+      const removed = tasks[dateKey].splice(index,1)[0]; if(tasks[dateKey].length === 0) delete tasks[dateKey]; saveState(); displayTasks(dateKey); renderUpcomingTasks(); renderCollaborationTable(); renderUpcomingOnDashboard(); addActivity(`Task deleted: "${removed}"`);
     }
-
-    function renderUpcomingTasks() {
+    function renderUpcomingTasks(){
       const today = new Date();
-      const upcomingTasks = [];
-      for (const dateKey in tasks) {
-        const [y, m, d] = dateKey.split("-").map(Number);
-        const taskDate = new Date(y, m - 1, d);
-        if (taskDate >= today) {
-          tasks[dateKey].forEach(task => upcomingTasks.push({ date: dateKey, task }));
+      const upcoming = [];
+      for(const dateKey in tasks){
+        const [y,m,d] = dateKey.split('-').map(Number);
+        const dt = new Date(y,m-1,d);
+        if(dt >= new Date(today.getFullYear(), today.getMonth(), today.getDate())){
+          tasks[dateKey].forEach(t=> upcoming.push({date:dateKey, task:t}));
         }
       }
-      upcomingTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-      const ul = document.getElementById("upcoming-tasks");
-      ul.innerHTML = "";
-      upcomingTasks.slice(0, 5).forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.date}: ${item.task}`;
-        ul.appendChild(li);
-      });
+      upcoming.sort((a,b)=> new Date(a.date)- new Date(b.date));
+      const ul = document.getElementById('upcoming-tasks'); ul.innerHTML='';
+      upcoming.slice(0,6).forEach(item=>{ const li = document.createElement('li'); li.textContent = `${item.date}: ${item.task}`; ul.appendChild(li); });
     }
 
-    function prevMonth() { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); }
-    function nextMonth() { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); }
+    function renderUpcomingOnDashboard(){
+      const container = document.getElementById('dashboard-upcoming'); container.innerHTML='';
+      const upcoming = [];
+      for(const dateKey in tasks){ tasks[dateKey].forEach(t=> upcoming.push({date:dateKey,task:t})); }
+      upcoming.sort((a,b)=> new Date(a.date)- new Date(b.date));
+      if(upcoming.length === 0) container.textContent = 'No upcoming tasks.';
+      else upcoming.slice(0,5).forEach(it=>{ const p = document.createElement('div'); p.style.marginBottom='8px'; p.textContent = `${it.date} — ${it.task}`; container.appendChild(p); });
+    }
 
-    // Assign unique colors to profile circles
-    document.querySelectorAll(".profile-circle").forEach(circle => {
-      const name = circle.dataset.member;
-      const colors = ["#6a0dad", "#ff66b2", "#ff9800", "#4caf50", "#2196f3"];
-      circle.style.background = colors[Math.floor(Math.random() * colors.length)];
-    });
 
-    renderCalendar();
-    renderUpcomingTasks();
+    function prevMonth(){ currentDate.setMonth(currentDate.getMonth()-1); renderCalendar(); }
+    function nextMonth(){ currentDate.setMonth(currentDate.getMonth()+1); renderCalendar(); }
+
+    function escapeHtml(unsafe) { return (''+unsafe).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]); }); }
+
+   
+    renderCalendar(); renderUpcomingTasks(); renderUpcomingOnDashboard(); renderCollaborationTable();
+
+    setInterval(()=>{
+      for(const taskId in joinTimes){
+        for(const m in joinTimes[taskId]){
+          const start = new Date(joinTimes[taskId][m]);
+          const extra = Math.max(0, Math.round((new Date()-start)/60000));
+          if(!timeSpent[taskId]) timeSpent[taskId] = {};
+          const base = parseInt(JSON.parse(localStorage.getItem('timeSpent')||'{}')[taskId]?.[m] || 0);
+          const total = base + extra;
+          const cell = document.getElementById('time-'+taskId);
+          if(cell){
+            const t = Object.keys(timeSpent[taskId]||{}).reduce((s,k)=> s + (parseInt(timeSpent[taskId][k])||0), 0) + extra;
+            cell.textContent = `${t} mins`;
+          }
+        }
+      }
+    }, 5000);
+
   </script>
 </body>
 </html>
